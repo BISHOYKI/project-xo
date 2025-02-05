@@ -1,5 +1,6 @@
 ﻿#import
 import random
+from tkinter import SEL
 #funtion
 def update_playbook(The_playbook, player_1, player_2):
     # تحديث خلية اللاعب الأول
@@ -121,8 +122,26 @@ def win_or_draw(option_1, option_2):
                 return win_for_o_or_x, test_draw
 
 
-def function_pc_game(The_playbook_after, game_for_x_or_o):
+#select level
+def select_level(select_level_option, option_game):
+    print(option_game)
+    if select_level_option == "extreme":
+        win_for_o_or_x, test_draw = level_extreme_for_pc(The_playbook, option_game)
+    elif select_level_option == "hard":
+        win_for_o_or_x, test_draw = level_hard_for_pc(The_playbook, option_game)
+    elif select_level_option == "normal":
+        win_for_o_or_x, test_draw = level_normal_for_pc(The_playbook, option_game)
+    elif select_level_option == "easy":
+        win_for_o_or_x, test_draw = level_easy_for_pc(The_playbook, option_game)
+    return win_for_o_or_x, test_draw
+                                                      
+    
+
+
+#level extreme 
+def level_extreme_for_pc(The_playbook_after, game_for_x_or_o):
     while True:
+        print("extreme")
         if game_for_x_or_o == 1:
             # funtion pc game o
             stop, pc_game, game_option = test_win_for_o(The_playbook_after)
@@ -185,6 +204,184 @@ def function_pc_game(The_playbook_after, game_for_x_or_o):
                 return win_for_o_or_x, test_draw
 
 
+#level hard
+def level_hard_for_pc(The_playbook_after, game_for_x_or_o):
+    while True:
+        print("hard")
+        if game_for_x_or_o == 1:
+            # funtion pc game o
+            stop, pc_game, game_option = test_win_for_o(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game, game_option = test_win_for_x(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game = function_option_for_pc(The_playbook_after, "o")
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game = option_game_for_pc_game(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+        elif game_for_x_or_o == 2:
+            # funtion pc game x
+            stop, pc_game, game_option = test_win_for_x(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game, game_option = test_win_for_o(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game = function_option_for_pc(The_playbook_after, "x")
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game = option_game_for_pc_game(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+
+
+#level normal
+def level_normal_for_pc(The_playbook_after, game_for_x_or_o):
+    while True:
+        print("normal")
+        if game_for_x_or_o == 1:
+            # funtion pc game o
+            stop, pc_game, game_option = test_win_for_o(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game, game_option = test_win_for_x(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game = option_game_for_pc_game(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, 10, pc_game)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+        elif game_for_x_or_o == 2:
+            # funtion pc game x
+            stop, pc_game, game_option = test_win_for_x(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game, game_option = test_win_for_o(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+            stop, pc_game = option_game_for_pc_game(The_playbook_after)
+            if stop:
+                update_playbook(The_playbook, pc_game, 10)
+                win_for_o_or_x = win_and_stop(The_playbook_after)
+                test_draw = funtion_test_draw(The_playbook_after)
+                prevent_dtep_repeat.append(pc_game)
+                return win_for_o_or_x, test_draw
+
+
+#level normal
+def level_easy_for_pc(The_playbook_after, game_for_x_or_o): 
+    print("easy")
+    while True:
+        option_game = random.choice([1, 2]) 
+        if game_for_x_or_o == 1:
+            # funtion pc game o
+            if option_game == 1:
+                stop, pc_game, game_option = test_win_for_o(The_playbook_after)
+                if stop:
+                    update_playbook(The_playbook, 10, pc_game)
+                    win_for_o_or_x = win_and_stop(The_playbook_after)
+                    test_draw = funtion_test_draw(The_playbook_after)
+                    prevent_dtep_repeat.append(pc_game)
+                    return win_for_o_or_x, test_draw
+                stop, pc_game, game_option = test_win_for_x(The_playbook_after)
+                if stop:
+                    update_playbook(The_playbook, 10, pc_game)
+                    win_for_o_or_x = win_and_stop(The_playbook_after)
+                    test_draw = funtion_test_draw(The_playbook_after)
+                    prevent_dtep_repeat.append(pc_game)
+                    return win_for_o_or_x, test_draw
+            else:
+                stop, pc_game = option_game_for_pc_game(The_playbook_after)
+                if stop:
+                    update_playbook(The_playbook, 10, pc_game)
+                    win_for_o_or_x = win_and_stop(The_playbook_after)
+                    test_draw = funtion_test_draw(The_playbook_after)
+                    prevent_dtep_repeat.append(pc_game)
+                    return win_for_o_or_x, test_draw
+                break
+        elif game_for_x_or_o == 2:
+            # funtion pc game x
+            print("ffffffffff")
+            if option_game == 1:
+                stop, pc_game, game_option = test_win_for_x(The_playbook_after)
+                if stop:
+                    update_playbook(The_playbook, pc_game, 10)
+                    win_for_o_or_x = win_and_stop(The_playbook_after)
+                    test_draw = funtion_test_draw(The_playbook_after)
+                    prevent_dtep_repeat.append(pc_game)
+                    return win_for_o_or_x, test_draw
+                stop, pc_game, game_option = test_win_for_o(The_playbook_after)
+                if stop:
+                    update_playbook(The_playbook, pc_game, 10)
+                    win_for_o_or_x = win_and_stop(The_playbook_after)
+                    test_draw = funtion_test_draw(The_playbook_after)
+                    prevent_dtep_repeat.append(pc_game)
+                    return win_for_o_or_x, test_draw
+            else:
+                stop, pc_game = option_game_for_pc_game(The_playbook_after)
+                if stop:
+                    update_playbook(The_playbook, pc_game, 10)
+                    win_for_o_or_x = win_and_stop(The_playbook_after)
+                    test_draw = funtion_test_draw(The_playbook_after)
+                    prevent_dtep_repeat.append(pc_game)
+                    return win_for_o_or_x, test_draw
+                break
+
+#play pc
 def test_win_for_o(The_playbook_after):
     stop = False
     pc_game = 10
@@ -363,6 +560,7 @@ print(" 1 | 2 | 3 ")
 while True:
     The_playbook = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     prevent_dtep_repeat = []
+    option_game = ""
     player_1 = 10
     player_2 = 10
     options_1 = int(input("\nair want play \n"
@@ -413,6 +611,26 @@ while True:
 
                 #the game for user
                 if   play_robbot == 1:
+                    option_level = input("select level:\n"
+                                         "1- extreme: 1\n"
+                                         "2-hard: 2\n"
+                                         "3-normal: 3\n"
+                                         "4-easy: 4\n")
+                    while True:
+                        if option_level == "1":
+                            option_level = "extreme"
+                            break
+                        elif option_level == "2":
+                            option_level = "hard"
+                            break
+                        elif option_level == "3":
+                            option_level = "normal"
+                            break
+                        elif option_level == "4":
+                            option_level = "easy"
+                            break
+                        else:
+                            print("Enter 1, 2, 3 or 4")
                     #the frist game for pc
                     user_input = win_or_draw(3, 2)
                     if not user_input == 10:
@@ -439,7 +657,7 @@ while True:
                             print_xo()
                             print("draw")
                             break
-                        win_for_o_or_x, test_draw = function_pc_game(The_playbook, 1)
+                        win_for_o_or_x, test_draw =  select_level(option_level, 1)
                         if win_for_o_or_x == "o_win":
                             print_xo()
                             print("win for pc (o):")
@@ -451,6 +669,26 @@ while True:
                         print_xo()
                 #the game for pc
                 elif play_robbot == 2:
+                    option_level = input("select level:\n"
+                                         "1- extreme: 1\n"
+                                         "2-hard: 2\n"
+                                         "3-normal: 3\n"
+                                         "4-easy: 4\n")
+                    while True:
+                        if option_level == "1":
+                            option_level = "extreme"
+                            break
+                        elif option_level == "2":
+                            option_level = "hard"
+                            break
+                        elif option_level == "3":
+                            option_level = "normal"
+                            break
+                        elif option_level == "4":
+                            option_level = "easy"
+                            break
+                        else:
+                            print("Enter 1, 2, 3 or 4")
                     pc_input = random.randint(1, 9)
                     update_playbook(The_playbook, pc_input, 10)
                     prevent_dtep_repeat.append(pc_input)
@@ -465,7 +703,7 @@ while True:
                             print_xo()
                             print("draw")
                             break
-                        win_for_o_or_x, test_draw = function_pc_game(The_playbook, 2)
+                        select_level(option_level, 2)
                         if win_for_o_or_x == "x_win":
                             print_xo()
                             print("win for pc (x):")
@@ -486,4 +724,3 @@ while True:
     except ValueError as ex:
         print("ERROR")
         print("Enter number:\n")
-
