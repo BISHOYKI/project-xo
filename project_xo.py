@@ -1,6 +1,5 @@
 ﻿#import
 import random
-from tkinter import SEL
 #funtion
 def update_playbook(The_playbook, player_1, player_2):
     # تحديث خلية اللاعب الأول
